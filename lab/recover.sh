@@ -7,8 +7,9 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 LOG=results/raw/recovery.jsonl
-DB=postgresql://lab:lab@127.0.0.1:5432/warehouse
-KESTRA="curl -fsS -u admin@example.com:Lab-pass-1234"
+set -a; . ./.env; set +a
+DB=$DATABASE_URL
+KESTRA="curl -fsS -u $KESTRA_USER:$KESTRA_PASSWORD"
 D=2026-11-20T
 
 note() { printf '{"ts": %s, "setup": "%s", "event": "%s"}\n' "$(date +%s.%N | cut -c1-14)" "$1" "$2" >> "$LOG"; }

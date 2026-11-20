@@ -4,6 +4,7 @@
 #   dead-man pings (healthchecks.io style), idempotent load and report.
 set -euo pipefail
 
+set -a; . /opt/lab/.env; set +a   # DATABASE_URL
 PARTITION=${PARTITION:-$(date -u -d '1 minute ago' +%Y-%m-%dT%H:%M)}
 HC=${HC_URL:-http://127.0.0.1:8080/ping/hardened}
 

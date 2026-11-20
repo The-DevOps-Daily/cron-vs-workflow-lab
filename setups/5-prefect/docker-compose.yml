@@ -1,5 +1,7 @@
 # Setup 5: Prefect, self-hosted as the API server plus its own Postgres,
 # and one process that serves the flow on its schedule.
+# The API binds to 127.0.0.1:4200 only (use an SSH tunnel) and requires the auth string
+# from .env.
 name: lab-prefect
 services:
   prefect-db:
@@ -7,7 +9,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: prefect
-      POSTGRES_PASSWORD: prefect
+      POSTGRES_PASSWORD: ${PREFECT_DB_PASSWORD:?run lab/make-env.sh}
       POSTGRES_DB: prefect
     volumes: [prefect-db:/var/lib/postgresql/data]
   prefect-server:
@@ -15,20 +17,25 @@ services:
     restart: unless-stopped
     command: prefect server start --host 0.0.0.0
     depends_on: [prefect-db]
-    ports: ["4200:4200"]
+    ports: ["127.0.0.1:4200:4200"]
     environment:
-      PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@prefect-db:5432/prefect
+      PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:${PREFECT_DB_PASSWORD}@prefect-db:5432/prefect
+      PREFECT_SERVER_API_AUTH_STRING: ${PREFECT_AUTH_STRING:?run lab/make-env.sh}
   etl-serve:
     build: .
     image: lab/prefect-etl:1
     restart: unless-stopped
     depends_on: [prefect-server]
-    extra_hosts: ["host.docker.internal:host-gateway"]
+    networks: [default, lab-net]
     volumes: [prefect-work:/work]
     environment:
       PREFECT_API_URL: http://prefect-server:4200/api
-      API_URL: http://host.docker.internal:8080
-      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      PREFECT_API_AUTH_STRING: ${PREFECT_AUTH_STRING}
+      API_URL: http://upstream:8080
+      DATABASE_URL: ${DATABASE_URL_DOCKER:?run lab/make-env.sh}
+networks:
+  lab-net:
+    external: true
 volumes:
   prefect-db:
   prefect-work:

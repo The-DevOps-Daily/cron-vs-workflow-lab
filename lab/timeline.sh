@@ -45,7 +45,7 @@ lab 'nohup /opt/lab/setups/1-cron-naive/etl.sh >> /var/log/etl-naive.log 2>&1 < 
      nohup /opt/lab/setups/2-cron-hardened/etl.sh >> /var/log/etl-hardened.log 2>&1 < /dev/null &
      kubectl -n lab create job --from=cronjob/etl manual-dup-$(date +%s)
      kubectl -n lab create job --from=cronjob/etl-append manual-dup-append-$(date +%s)
-     curl -fsS -u admin@example.com:Lab-pass-1234 -X POST localhost:8088/api/v1/main/executions/lab/etl -o /dev/null
+     . /opt/lab/.env; curl -fsS -u "$KESTRA_USER:$KESTRA_PASSWORD" -X POST localhost:8088/api/v1/main/executions/lab/etl -o /dev/null
      docker exec lab-prefect-etl-serve-1 prefect deployment run etl/nightly >/dev/null' || log "duplicate: a manual trigger failed"
 log "duplicate: manual runs triggered"
 
@@ -71,4 +71,4 @@ log "outage: ssh is back"
 # let every setup settle for five ticks, then score
 at 35 0
 log "end"
-lab "cd /opt/lab && python3 lab/score.py --from $(part 0) --to $(part 33) --json results/timeline-score.json" | tee results/timeline-score.txt
+lab "cd /opt/lab && set -a && . ./.env && set +a && python3 lab/score.py --from $(part 0) --to $(part 33) --json results/timeline-score.json" | tee results/timeline-score.txt

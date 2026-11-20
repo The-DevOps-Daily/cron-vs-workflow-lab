@@ -27,8 +27,8 @@ tasks:
       interval: PT10S
       maxAttempts: 3
     env:
-      API_URL: http://host.docker.internal:8080
-      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      API_URL: http://upstream:8080
+      DATABASE_URL: "{{ secret('DATABASE_URL') }}"
       RUN_ID: "{{ execution.id }}"
     commands:
       - python3 /opt/etl/etl.py extract --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
@@ -42,8 +42,8 @@ tasks:
       interval: PT10S
       maxAttempts: 3
     env:
-      API_URL: http://host.docker.internal:8080
-      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      API_URL: http://upstream:8080
+      DATABASE_URL: "{{ secret('DATABASE_URL') }}"
       RUN_ID: "{{ execution.id }}"
     commands:
       - python3 /opt/etl/etl.py transform --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
@@ -57,8 +57,8 @@ tasks:
       interval: PT10S
       maxAttempts: 3
     env:
-      API_URL: http://host.docker.internal:8080
-      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      API_URL: http://upstream:8080
+      DATABASE_URL: "{{ secret('DATABASE_URL') }}"
       RUN_ID: "{{ execution.id }}"
     commands:
       - python3 /opt/etl/etl.py load --mode upsert --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
@@ -72,8 +72,8 @@ tasks:
       interval: PT10S
       maxAttempts: 3
     env:
-      API_URL: http://host.docker.internal:8080
-      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      API_URL: http://upstream:8080
+      DATABASE_URL: "{{ secret('DATABASE_URL') }}"
       RUN_ID: "{{ execution.id }}"
     commands:
       - python3 /opt/etl/etl.py report --report-mode once --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}

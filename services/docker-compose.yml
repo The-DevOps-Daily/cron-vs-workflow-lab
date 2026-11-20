@@ -1,17 +1,24 @@
 # Shared by every setup: the warehouse Postgres and the fake upstream
 # (source API, report sink, dead-man switch, event log).
+# Ports bind to 127.0.0.1 only: Docker's published ports bypass ufw, and nothing here
+# needs to be reachable from outside the box. Kestra and Prefect reach both services
+# over the lab-net Docker network; cron and the k3s pods (hostNetwork) use 127.0.0.1.
+# Credentials come from .env (lab/make-env.sh).
 name: lab-services
 services:
   warehouse:
     image: postgres:17.6
     restart: unless-stopped
     environment:
-      POSTGRES_USER: lab
-      POSTGRES_PASSWORD: lab
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?run lab/make-env.sh}
       POSTGRES_DB: warehouse
-    ports: ["5432:5432"]
+      ETL_PASSWORD: ${ETL_PASSWORD:?run lab/make-env.sh}
+    ports: ["127.0.0.1:5432:5432"]
+    networks: [lab-net]
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./01-role.sh:/docker-entrypoint-initdb.d/01-role.sh:ro
+      - ./02-schema.sql:/docker-entrypoint-initdb.d/02-schema.sql:ro
       - warehouse:/var/lib/postgresql/data
   upstream:
     image: python:3.12.12-slim
@@ -19,9 +26,13 @@ services:
     command: python3 -u /app/app.py
     environment:
       DATA_DIR: /data
-    ports: ["8080:8080"]
+    ports: ["127.0.0.1:8080:8080"]
+    networks: [lab-net]
     volumes:
       - ./upstream:/app:ro
       - ../results/raw:/data
+networks:
+  lab-net:
+    name: lab-net
 volumes:
   warehouse:

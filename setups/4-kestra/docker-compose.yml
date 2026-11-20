@@ -1,4 +1,5 @@
 # Setup 4: Kestra, self-hosted as one standalone server plus its own Postgres.
+# The UI and API bind to 127.0.0.1:8088 only (use an SSH tunnel); credentials come from .env.
 name: lab-kestra
 services:
   kestra-db:
@@ -6,7 +7,7 @@ services:
     restart: unless-stopped
     environment:
       POSTGRES_USER: kestra
-      POSTGRES_PASSWORD: kestra
+      POSTGRES_PASSWORD: ${KESTRA_DB_PASSWORD:?run lab/make-env.sh}
       POSTGRES_DB: kestra
     volumes: [kestra-db:/var/lib/postgresql/data]
   kestra:
@@ -16,24 +17,26 @@ services:
     user: root
     command: server standalone --worker-thread=8
     depends_on: [kestra-db]
-    extra_hosts: ["host.docker.internal:host-gateway"]
-    ports: ["8088:8080"]
+    networks: [default, lab-net]
+    ports: ["127.0.0.1:8088:8080"]
     volumes:
       - kestra-storage:/app/storage
       - kestra-work:/work
     environment:
+      # Kestra OSS reads secrets from SECRET_* variables, base64 encoded: {{ secret('DATABASE_URL') }}
+      SECRET_DATABASE_URL: ${DATABASE_URL_DOCKER_B64:?run lab/make-env.sh}
       KESTRA_CONFIGURATION: |
         datasources:
           postgres:
             url: jdbc:postgresql://kestra-db:5432/kestra
             driver-class-name: org.postgresql.Driver
             username: kestra
-            password: kestra
+            password: ${KESTRA_DB_PASSWORD}
         kestra:
           server:
             basic-auth:
-              username: admin@example.com
-              password: Lab-pass-1234
+              username: ${KESTRA_USER:?run lab/make-env.sh}
+              password: ${KESTRA_PASSWORD:?run lab/make-env.sh}
           repository:
             type: postgres
           queue:
@@ -43,6 +46,9 @@ services:
             local:
               base-path: /app/storage
           url: http://localhost:8088/
+networks:
+  lab-net:
+    external: true
 volumes:
   kestra-db:
   kestra-storage:

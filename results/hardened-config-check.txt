@@ -1,0 +1,35 @@
+== score 2026-11-20T19:08..2026-11-20T19:09 (fresh droplet, hardened config)
+setup       partition          exp  rows  dist rep runs err crash  verdict
+naive       2026-11-20T19:08   551   551   551   1    1   0     0  ok
+naive       2026-11-20T19:09   570   570   570   1    1   0     0  ok
+hardened    2026-11-20T19:08   551   551   551   1    1   0     0  ok
+hardened    2026-11-20T19:09   570   570   570   1    1   0     0  ok
+k8s         2026-11-20T19:08   551   551   551   1    1   0     0  ok
+k8s         2026-11-20T19:09   570   570   570   1    1   0     0  ok
+k8s_append  2026-11-20T19:08   551   551   551   1    1   0     0  ok
+k8s_append  2026-11-20T19:09   570   570   570   1    1   0     0  ok
+kestra      2026-11-20T19:08   551   551   551   1    1   0     0  ok
+kestra      2026-11-20T19:09   570   570   570   1    1   0     0  ok
+prefect     2026-11-20T19:08   551   551   551   1    1   0     0  ok
+prefect     2026-11-20T19:09   570   570   570   1    1   0     0  ok
+== listening sockets
+LISTEN 0      4096       127.0.0.1:8080       0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:8088       0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:5432       0.0.0.0:*          
+LISTEN 0      4096       127.0.0.1:4200       0.0.0.0:*          
+== etl role
+etl|f|f|f
+== kestra without credentials
+401
+== prefect API without the auth string
+401
+== prefect CLI inside the serve container
+1
+== collect.sh
+  121 total
+== outside port scan from another droplet (nc -zv), no cloud firewall on this droplet
+Connection to <check-droplet> 22 port [tcp/ssh] succeeded!
+nc: connect to <check-droplet> port 5432 (tcp) failed: Connection refused
+nc: connect to <check-droplet> port 8080 (tcp) failed: Connection refused
+nc: connect to <check-droplet> port 8088 (tcp) failed: Connection refused
+nc: connect to <check-droplet> port 4200 (tcp) failed: Connection refused

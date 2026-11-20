@@ -1,6 +1,9 @@
 -- One schema per setup, so all setups can run side by side against one warehouse.
 -- naive and k8s_append keep the table most first versions have: a surrogate key
 -- and no unique constraint on the business key. The others add one.
+-- Runs as the etl role, so it owns the schemas and tables.
+SET ROLE etl;
+
 DO $$
 DECLARE s text;
 BEGIN

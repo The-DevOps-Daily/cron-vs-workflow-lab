@@ -1,3 +1,6 @@
 setups/4-kestra/etl.py
 setups/5-prefect/etl.py
 __pycache__/
+.env
+*/.env
+setups/*/.env

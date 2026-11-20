@@ -43,4 +43,4 @@ log "reboot: ssh is back"
 
 at 28 0
 log "end"
-lab "cd /opt/lab && python3 lab/score.py --from $(part 0) --to $(part 26) --json results/timeline-repeat-score.json" | tee results/timeline-repeat-score.txt
+lab "cd /opt/lab && set -a && . ./.env && set +a && python3 lab/score.py --from $(part 0) --to $(part 26) --json results/timeline-repeat-score.json" | tee results/timeline-repeat-score.txt

@@ -23,7 +23,7 @@ import psycopg
 import requests
 
 API = os.environ.get("API_URL", "http://127.0.0.1:8080")
-DSN = os.environ.get("DATABASE_URL", "postgresql://lab:lab@127.0.0.1:5432/warehouse")
+DSN = os.environ["DATABASE_URL"]  # from .env, see lab/make-env.sh
 RUN_ID = os.environ.get("RUN_ID") or str(uuid.uuid4())
 
 

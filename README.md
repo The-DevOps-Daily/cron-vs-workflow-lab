@@ -23,24 +23,32 @@ minute T loads partition T-1.
 
 You need a disposable Ubuntu 24.04 VM with 4 vCPU and 8 GB RAM (the lab used a DigitalOcean
 `s-4vcpu-8gb` droplet), plus a second machine to drive the timeline, because the timeline
-reboots and powers off the VM. Do not expose ports 4200, 5432, 8080 or 8088: the passwords
-in this repo are lab passwords.
+reboots and powers off the VM.
+
+Every published port binds to 127.0.0.1, because Docker's published ports bypass ufw and
+nothing in the lab needs to be reachable from outside. Open the Kestra (8088) and Prefect
+(4200) UIs through an SSH tunnel: `ssh -L 8088:127.0.0.1:8088 -L 4200:127.0.0.1:4200 root@<vm-ip>`.
+Credentials are random, generated into an uncommitted `.env` by `lab/make-env.sh` (see
+`.env.example`), and the jobs connect as a non-superuser `etl` role.
 
 ```bash
 # on the VM, as root
 apt-get install -y docker.io docker-compose-v2 python3-psycopg python3-requests postgresql-client jq cron
 curl -sfL https://get.k3s.io | sh -s - --disable traefik --disable metrics-server
 git clone https://github.com/The-DevOps-Daily/cron-vs-workflow-lab /opt/lab && cd /opt/lab
+./lab/make-env.sh && set -a && . ./.env && set +a
 ./lab/sync-etl.sh
 (cd services && docker compose up -d)
 docker build -t lab/etl:1 etl && docker save lab/etl:1 | k3s ctr images import -
 (cd setups/4-kestra && docker compose up -d --build)
 (cd setups/5-prefect && docker compose up -d --build)
-curl -s -u admin@example.com:Lab-pass-1234 -X POST -H "Content-Type: application/x-yaml" \
+curl -s -u "$KESTRA_USER:$KESTRA_PASSWORD" -X POST -H "Content-Type: application/x-yaml" \
   --data-binary @setups/4-kestra/etl.yml localhost:8088/api/v1/main/flows
 curl -s -X POST "localhost:8080/admin/checks/hardened?period=60&grace=120"
 cp setups/1-cron-naive/crontab /etc/cron.d/etl-naive
 cp setups/2-cron-hardened/crontab /etc/cron.d/etl-hardened
+kubectl create namespace lab
+kubectl -n lab create secret generic etl-db --from-literal=DATABASE_URL="$DATABASE_URL"
 kubectl apply -f setups/3-k8s-cronjob/cronjob.yaml
 
 # on the second machine (it needs ssh to the VM, and a DigitalOcean token to power it back on)
@@ -50,6 +58,12 @@ LAB=root@<vm-ip> DROPLET_ID=<id> DO_TOKEN=<token> ./lab/timeline.sh
 ./lab/collect.sh                      # dump what each scheduler recorded
 python3 lab/score.py --from <first partition> --to <last partition>
 ```
+
+The published run (2026-11-20) used an earlier revision of these files that published the
+ports on all interfaces with fixed lab passwords; the droplet sat behind a DigitalOcean cloud
+firewall that allowed only SSH in, and was destroyed after the run. The localhost binding,
+the generated `.env` and the non-superuser role were added afterwards and checked on a fresh
+droplet (`results/hardened-config-check.txt`). The schedulers and the job are unchanged.
 
 If you are not on DigitalOcean, replace the `power_on` call in `lab/timeline.sh` with your
 provider's equivalent.

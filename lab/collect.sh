@@ -13,7 +13,8 @@ kubectl -n lab get events --sort-by=.lastTimestamp -o json | jq -c '.items[] | {
   count, reason, object: .involvedObject.name, message}' > k8s-events.new
 # events expire after an hour, so keep what earlier collections saw
 cat k8s-events.new k8s-events.jsonl 2>/dev/null | sort -u > k8s-events.tmp && mv k8s-events.tmp k8s-events.jsonl && rm k8s-events.new
-K="curl -fsS -u admin@example.com:Lab-pass-1234 localhost:8088/api/v1/main/executions"
+set -a; . ../../.env; set +a
+K="curl -fsS -u $KESTRA_USER:$KESTRA_PASSWORD localhost:8088/api/v1/main/executions"
 for id in $($K/search?namespace=lab\&flowId=etl\&size=1000 | jq -r '.results[].id'); do $K/$id; echo; done |
   jq -c '{id, state: .state.current, created: .state.histories[0].date, labels,
     histories: [.state.histories[] | {state, date}], trigger: .trigger.variables.date,

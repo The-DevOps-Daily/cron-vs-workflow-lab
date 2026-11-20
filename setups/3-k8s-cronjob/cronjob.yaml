@@ -1,5 +1,8 @@
 # Setup 3: a Kubernetes CronJob with the four fields that matter for a nightly job.
 # Same image and same idempotent load as setup 2. Applied to a single-node k3s cluster.
+# The pods use the host network so they reach the services on 127.0.0.1, which is the
+# only address those ports are published on. DATABASE_URL comes from the etl-db Secret:
+#   kubectl -n lab create secret generic etl-db --from-literal=DATABASE_URL="$DATABASE_URL"
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -24,6 +27,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          hostNetwork: true
           containers:
             - name: etl
               image: lab/etl:1
@@ -32,10 +36,9 @@ spec:
                 - { name: SETUP, value: k8s }
                 - { name: LOAD_MODE, value: upsert }
                 - { name: REPORT_MODE, value: once }
-                - name: HOST_IP
-                  valueFrom: { fieldRef: { fieldPath: status.hostIP } }
-                - { name: API_URL, value: "http://$(HOST_IP):8080" }
-                - { name: DATABASE_URL, value: "postgresql://lab:lab@$(HOST_IP):5432/warehouse" }
+                - { name: API_URL, value: "http://127.0.0.1:8080" }
+                - name: DATABASE_URL
+                  valueFrom: { secretKeyRef: { name: etl-db, key: DATABASE_URL } }
 ---
 # Setup 3b: the identical CronJob with the load most first versions have (append).
 # It exists to show what Kubernetes retries do to a non-idempotent write.
@@ -58,6 +61,7 @@ spec:
       template:
         spec:
           restartPolicy: Never
+          hostNetwork: true
           containers:
             - name: etl
               image: lab/etl:1
@@ -66,7 +70,6 @@ spec:
                 - { name: SETUP, value: k8s_append }
                 - { name: LOAD_MODE, value: append }
                 - { name: REPORT_MODE, value: always }
-                - name: HOST_IP
-                  valueFrom: { fieldRef: { fieldPath: status.hostIP } }
-                - { name: API_URL, value: "http://$(HOST_IP):8080" }
-                - { name: DATABASE_URL, value: "postgresql://lab:lab@$(HOST_IP):5432/warehouse" }
+                - { name: API_URL, value: "http://127.0.0.1:8080" }
+                - name: DATABASE_URL
+                  valueFrom: { secretKeyRef: { name: etl-db, key: DATABASE_URL } }

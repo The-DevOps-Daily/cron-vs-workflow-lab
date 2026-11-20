@@ -23,7 +23,7 @@ import requests
 
 SETUPS = ["naive", "hardened", "k8s", "k8s_append", "kestra", "prefect"]
 API = os.environ.get("API_URL", "http://127.0.0.1:8080")
-DSN = os.environ.get("DATABASE_URL", "postgresql://lab:lab@127.0.0.1:5432/warehouse")
+DSN = os.environ["DATABASE_URL"]  # source .env first
 RAW = os.environ.get("RAW_DIR", os.path.join(os.path.dirname(__file__), "..", "results", "raw"))
 
 

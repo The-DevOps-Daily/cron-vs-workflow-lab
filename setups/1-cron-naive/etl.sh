@@ -4,6 +4,7 @@
 set -euo pipefail
 
 # the run at minute T loads partition T-1, the way a nightly job loads yesterday
+set -a; . /opt/lab/.env; set +a   # DATABASE_URL
 PARTITION=${PARTITION:-$(date -u -d '1 minute ago' +%Y-%m-%dT%H:%M)}
 WORK=/var/tmp/etl-naive   # fixed path, shared by every run
 mkdir -p "$WORK"
