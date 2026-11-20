@@ -1,0 +1,2 @@
+# /etc/cron.d/etl-hardened
+* * * * * root /opt/lab/setups/2-cron-hardened/etl.sh >> /var/log/etl-hardened.log 2>&1

@@ -1,0 +1,10 @@
+{"ts": 1795193915.418, "action": "start S=2026-11-20T17:00 crash=2026-11-20T17:03 overlap=2026-11-20T17:06 poison=2026-11-20T17:11 dup=2026-11-20T17:14 reboot=2026-11-20T17:18"}
+{"ts": 1795193916.516, "action": "faults programmed"}
+{"ts": 1795194908.777, "action": "duplicate: manual runs start"}
+{"ts": 1795194917.642, "action": "duplicate: manual runs triggered"}
+{"ts": 1795195165.568, "action": "reboot: systemctl reboot"}
+{"ts": 1795195201.293, "action": "reboot: ssh is back"}
+{"ts": 1795195520.767, "action": "outage: systemctl poweroff"}
+{"ts": 1795195670.696, "action": "outage: power_on requested"}
+{"ts": 1795195701.096, "action": "outage: ssh is back"}
+{"ts": 1795196100.180, "action": "end"}

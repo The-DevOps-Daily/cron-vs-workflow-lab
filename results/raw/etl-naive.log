@@ -1,0 +1,762 @@
+extract naive 2026-11-20T16:56: {'rows': 518}
+transform naive 2026-11-20T16:56: {'rows': 518}
+load naive 2026-11-20T16:56: {'rows': 518}
+report naive 2026-11-20T16:56: {'sent': True}
+extract naive 2026-11-20T16:57: {'rows': 580}
+transform naive 2026-11-20T16:57: {'rows': 580}
+load naive 2026-11-20T16:57: {'rows': 580}
+report naive 2026-11-20T16:57: {'sent': True}
+extract naive 2026-11-20T16:58: {'rows': 505}
+transform naive 2026-11-20T16:58: {'rows': 505}
+load naive 2026-11-20T16:58: {'rows': 505}
+report naive 2026-11-20T16:58: {'sent': True}
+extract naive 2026-11-20T16:59: {'rows': 564}
+transform naive 2026-11-20T16:59: {'rows': 564}
+load naive 2026-11-20T16:59: {'rows': 564}
+report naive 2026-11-20T16:59: {'sent': True}
+extract naive 2026-11-20T17:00: {'rows': 529}
+transform naive 2026-11-20T17:00: {'rows': 529}
+load naive 2026-11-20T17:00: {'rows': 529}
+report naive 2026-11-20T17:00: {'sent': True}
+extract naive 2026-11-20T17:01: {'rows': 546}
+transform naive 2026-11-20T17:01: {'rows': 546}
+load naive 2026-11-20T17:01: {'rows': 546}
+report naive 2026-11-20T17:01: {'sent': True}
+extract naive 2026-11-20T17:02: {'rows': 520}
+transform naive 2026-11-20T17:02: {'rows': 520}
+load naive 2026-11-20T17:02: {'rows': 520}
+report naive 2026-11-20T17:02: {'sent': True}
+extract naive 2026-11-20T17:03: {'rows': 574}
+transform naive 2026-11-20T17:03: {'rows': 574}
+extract naive 2026-11-20T17:04: {'rows': 520}
+transform naive 2026-11-20T17:04: {'rows': 520}
+load naive 2026-11-20T17:04: {'rows': 520}
+report naive 2026-11-20T17:04: {'sent': True}
+extract naive 2026-11-20T17:05: {'rows': 541}
+transform naive 2026-11-20T17:05: {'rows': 541}
+load naive 2026-11-20T17:05: {'rows': 541}
+report naive 2026-11-20T17:05: {'sent': True}
+extract naive 2026-11-20T17:07: {'rows': 546}
+transform naive 2026-11-20T17:07: {'rows': 546}
+load naive 2026-11-20T17:07: {'rows': 546}
+report naive 2026-11-20T17:07: {'sent': True}
+extract naive 2026-11-20T17:06: {'rows': 533}
+Traceback (most recent call last):
+  File "/opt/lab/etl/etl.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/lab/etl/etl.py", line 153, in main
+    out = STEPS[step](a)
+          ^^^^^^^^^^^^^^
+  File "/opt/lab/etl/etl.py", line 61, in transform
+    rec = json.loads(line)
+          ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 1 column 17 (char 16)
+extract naive 2026-11-20T17:08: {'rows': 545}
+transform naive 2026-11-20T17:08: {'rows': 545}
+load naive 2026-11-20T17:08: {'rows': 545}
+report naive 2026-11-20T17:08: {'sent': True}
+extract naive 2026-11-20T17:09: {'rows': 516}
+transform naive 2026-11-20T17:09: {'rows': 516}
+load naive 2026-11-20T17:09: {'rows': 516}
+report naive 2026-11-20T17:09: {'sent': True}
+extract naive 2026-11-20T17:10: {'rows': 549}
+transform naive 2026-11-20T17:10: {'rows': 549}
+load naive 2026-11-20T17:10: {'rows': 549}
+report naive 2026-11-20T17:10: {'sent': True}
+extract naive 2026-11-20T17:11: {'rows': 565}
+Traceback (most recent call last):
+  File "/opt/lab/etl/etl.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/lab/etl/etl.py", line 153, in main
+    out = STEPS[step](a)
+          ^^^^^^^^^^^^^^
+  File "/opt/lab/etl/etl.py", line 63, in transform
+    cents = int(Decimal(rec["amount"]) * 100)
+                ^^^^^^^^^^^^^^^^^^^^^^
+decimal.InvalidOperation: [<class 'decimal.ConversionSyntax'>]
+extract naive 2026-11-20T17:12: {'rows': 505}
+transform naive 2026-11-20T17:12: {'rows': 505}
+load naive 2026-11-20T17:12: {'rows': 505}
+report naive 2026-11-20T17:12: {'sent': True}
+extract naive 2026-11-20T17:13: {'rows': 570}
+transform naive 2026-11-20T17:13: {'rows': 570}
+load naive 2026-11-20T17:13: {'rows': 570}
+report naive 2026-11-20T17:13: {'sent': True}
+extract naive 2026-11-20T17:14: {'rows': 536}
+transform naive 2026-11-20T17:14: {'rows': 536}
+load naive 2026-11-20T17:14: {'rows': 536}
+report naive 2026-11-20T17:14: {'sent': True}
+extract naive 2026-11-20T17:14: {'rows': 536}
+transform naive 2026-11-20T17:14: {'rows': 536}
+load naive 2026-11-20T17:14: {'rows': 536}
+report naive 2026-11-20T17:14: {'sent': True}
+extract naive 2026-11-20T17:15: {'rows': 576}
+transform naive 2026-11-20T17:15: {'rows': 576}
+load naive 2026-11-20T17:15: {'rows': 576}
+report naive 2026-11-20T17:15: {'sent': True}
+extract naive 2026-11-20T17:16: {'rows': 557}
+transform naive 2026-11-20T17:16: {'rows': 557}
+load naive 2026-11-20T17:16: {'rows': 557}
+report naive 2026-11-20T17:16: {'sent': True}
+extract naive 2026-11-20T17:17: {'rows': 597}
+transform naive 2026-11-20T17:17: {'rows': 597}
+load naive 2026-11-20T17:17: {'rows': 597}
+report naive 2026-11-20T17:17: {'sent': True}
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 472, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/lab/etl/etl.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/lab/etl/etl.py", line 153, in main
+    out = STEPS[step](a)
+          ^^^^^^^^^^^^^^
+  File "/opt/lab/etl/etl.py", line 44, in extract
+    r = requests.get(f"{API}/orders", timeout=60, headers={"X-Run-Id": RUN_ID},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 203, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 497, in _make_request
+    conn.request(
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 395, in request
+    self.endheaders()
+  File "/usr/lib/python3.12/http/client.py", line 1360, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.12/http/client.py", line 1120, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.12/http/client.py", line 1064, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 243, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 218, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x719cffc40680>: Failed to establish a new connection: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 517, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /orders?setup=naive&partition=2026-11-20T17%3A19&page=1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x719cffc40680>: Failed to establish a new connection: [Errno 111] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/lab/etl/etl.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/lab/etl/etl.py", line 153, in main
+    out = STEPS[step](a)
+          ^^^^^^^^^^^^^^
+  File "/opt/lab/etl/etl.py", line 44, in extract
+    r = requests.get(f"{API}/orders", timeout=60, headers={"X-Run-Id": RUN_ID},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /orders?setup=naive&partition=2026-11-20T17%3A19&page=1 (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x719cffc40680>: Failed to establish a new connection: [Errno 111] Connection refused'))
+extract naive 2026-11-20T17:20: {'rows': 557}
+transform naive 2026-11-20T17:20: {'rows': 557}
+load naive 2026-11-20T17:20: {'rows': 557}
+report naive 2026-11-20T17:20: {'sent': True}
+extract naive 2026-11-20T17:21: {'rows': 592}
+transform naive 2026-11-20T17:21: {'rows': 592}
+load naive 2026-11-20T17:21: {'rows': 592}
+report naive 2026-11-20T17:21: {'sent': True}
+extract naive 2026-11-20T17:22: {'rows': 555}
+transform naive 2026-11-20T17:22: {'rows': 555}
+load naive 2026-11-20T17:22: {'rows': 555}
+report naive 2026-11-20T17:22: {'sent': True}
+extract naive 2026-11-20T17:23: {'rows': 534}
+transform naive 2026-11-20T17:23: {'rows': 534}
+load naive 2026-11-20T17:23: {'rows': 534}
+report naive 2026-11-20T17:23: {'sent': True}
+extract naive 2026-11-20T17:24: {'rows': 519}
+transform naive 2026-11-20T17:24: {'rows': 519}
+load naive 2026-11-20T17:24: {'rows': 519}
+report naive 2026-11-20T17:24: {'sent': True}
+extract naive 2026-11-20T17:28: {'rows': 562}
+transform naive 2026-11-20T17:28: {'rows': 562}
+load naive 2026-11-20T17:28: {'rows': 562}
+report naive 2026-11-20T17:28: {'sent': True}
+extract naive 2026-11-20T17:29: {'rows': 559}
+transform naive 2026-11-20T17:29: {'rows': 559}
+load naive 2026-11-20T17:29: {'rows': 559}
+report naive 2026-11-20T17:29: {'sent': True}
+extract naive 2026-11-20T17:30: {'rows': 523}
+transform naive 2026-11-20T17:30: {'rows': 523}
+load naive 2026-11-20T17:30: {'rows': 523}
+report naive 2026-11-20T17:30: {'sent': True}
+extract naive 2026-11-20T17:31: {'rows': 527}
+transform naive 2026-11-20T17:31: {'rows': 527}
+load naive 2026-11-20T17:31: {'rows': 527}
+report naive 2026-11-20T17:31: {'sent': True}
+extract naive 2026-11-20T17:32: {'rows': 507}
+transform naive 2026-11-20T17:32: {'rows': 507}
+load naive 2026-11-20T17:32: {'rows': 507}
+report naive 2026-11-20T17:32: {'sent': True}
+extract naive 2026-11-20T17:33: {'rows': 530}
+transform naive 2026-11-20T17:33: {'rows': 530}
+load naive 2026-11-20T17:33: {'rows': 530}
+report naive 2026-11-20T17:33: {'sent': True}
+extract naive 2026-11-20T17:34: {'rows': 585}
+transform naive 2026-11-20T17:34: {'rows': 585}
+load naive 2026-11-20T17:34: {'rows': 585}
+report naive 2026-11-20T17:34: {'sent': True}
+extract naive 2026-11-20T17:35: {'rows': 540}
+transform naive 2026-11-20T17:35: {'rows': 540}
+load naive 2026-11-20T17:35: {'rows': 540}
+report naive 2026-11-20T17:35: {'sent': True}
+extract naive 2026-11-20T17:36: {'rows': 597}
+transform naive 2026-11-20T17:36: {'rows': 597}
+load naive 2026-11-20T17:36: {'rows': 597}
+report naive 2026-11-20T17:36: {'sent': True}
+extract naive 2026-11-20T17:37: {'rows': 582}
+transform naive 2026-11-20T17:37: {'rows': 582}
+load naive 2026-11-20T17:37: {'rows': 582}
+report naive 2026-11-20T17:37: {'sent': True}
+extract naive 2026-11-20T17:38: {'rows': 520}
+transform naive 2026-11-20T17:38: {'rows': 520}
+load naive 2026-11-20T17:38: {'rows': 520}
+report naive 2026-11-20T17:38: {'sent': True}
+extract naive 2026-11-20T17:39: {'rows': 509}
+transform naive 2026-11-20T17:39: {'rows': 509}
+load naive 2026-11-20T17:39: {'rows': 509}
+report naive 2026-11-20T17:39: {'sent': True}
+extract naive 2026-11-20T17:40: {'rows': 550}
+transform naive 2026-11-20T17:40: {'rows': 550}
+load naive 2026-11-20T17:40: {'rows': 550}
+report naive 2026-11-20T17:40: {'sent': True}
+extract naive 2026-11-20T17:41: {'rows': 538}
+transform naive 2026-11-20T17:41: {'rows': 538}
+load naive 2026-11-20T17:41: {'rows': 538}
+report naive 2026-11-20T17:41: {'sent': True}
+extract naive 2026-11-20T17:42: {'rows': 569}
+transform naive 2026-11-20T17:42: {'rows': 569}
+load naive 2026-11-20T17:42: {'rows': 569}
+report naive 2026-11-20T17:42: {'sent': True}
+extract naive 2026-11-20T17:43: {'rows': 533}
+transform naive 2026-11-20T17:43: {'rows': 533}
+load naive 2026-11-20T17:43: {'rows': 533}
+report naive 2026-11-20T17:43: {'sent': True}
+extract naive 2026-11-20T17:44: {'rows': 594}
+transform naive 2026-11-20T17:44: {'rows': 594}
+load naive 2026-11-20T17:44: {'rows': 594}
+report naive 2026-11-20T17:44: {'sent': True}
+extract naive 2026-11-20T17:45: {'rows': 597}
+transform naive 2026-11-20T17:45: {'rows': 597}
+load naive 2026-11-20T17:45: {'rows': 597}
+report naive 2026-11-20T17:45: {'sent': True}
+extract naive 2026-11-20T17:46: {'rows': 534}
+transform naive 2026-11-20T17:46: {'rows': 534}
+load naive 2026-11-20T17:46: {'rows': 534}
+report naive 2026-11-20T17:46: {'sent': True}
+extract naive 2026-11-20T17:47: {'rows': 548}
+transform naive 2026-11-20T17:47: {'rows': 548}
+load naive 2026-11-20T17:47: {'rows': 548}
+report naive 2026-11-20T17:47: {'sent': True}
+extract naive 2026-11-20T17:48: {'rows': 591}
+transform naive 2026-11-20T17:48: {'rows': 591}
+load naive 2026-11-20T17:48: {'rows': 591}
+report naive 2026-11-20T17:48: {'sent': True}
+extract naive 2026-11-20T17:49: {'rows': 572}
+transform naive 2026-11-20T17:49: {'rows': 572}
+load naive 2026-11-20T17:49: {'rows': 572}
+report naive 2026-11-20T17:49: {'sent': True}
+extract naive 2026-11-20T17:03: {'rows': 574}
+transform naive 2026-11-20T17:03: {'rows': 574}
+load naive 2026-11-20T17:03: {'rows': 574}
+report naive 2026-11-20T17:03: {'sent': True}
+extract naive 2026-11-20T17:50: {'rows': 547}
+transform naive 2026-11-20T17:50: {'rows': 547}
+load naive 2026-11-20T17:50: {'rows': 547}
+report naive 2026-11-20T17:50: {'sent': True}
+extract naive 2026-11-20T17:51: {'rows': 520}
+transform naive 2026-11-20T17:51: {'rows': 520}
+load naive 2026-11-20T17:51: {'rows': 520}
+report naive 2026-11-20T17:51: {'sent': True}
+extract naive 2026-11-20T17:06: {'rows': 533}
+Traceback (most recent call last):
+  File "/opt/lab/etl/etl.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/lab/etl/etl.py", line 153, in main
+    out = STEPS[step](a)
+          ^^^^^^^^^^^^^^
+  File "/opt/lab/etl/etl.py", line 61, in transform
+    rec = json.loads(line)
+          ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 1 column 106 (char 105)
+extract naive 2026-11-20T17:52: {'rows': 506}
+transform naive 2026-11-20T17:52: {'rows': 506}
+load naive 2026-11-20T17:52: {'rows': 506}
+report naive 2026-11-20T17:52: {'sent': True}
+extract naive 2026-11-20T17:53: {'rows': 526}
+transform naive 2026-11-20T17:53: {'rows': 526}
+load naive 2026-11-20T17:53: {'rows': 526}
+report naive 2026-11-20T17:53: {'sent': True}
+extract naive 2026-11-20T17:54: {'rows': 507}
+transform naive 2026-11-20T17:54: {'rows': 507}
+load naive 2026-11-20T17:54: {'rows': 507}
+report naive 2026-11-20T17:54: {'sent': True}
+extract naive 2026-11-20T17:55: {'rows': 547}
+transform naive 2026-11-20T17:55: {'rows': 547}
+load naive 2026-11-20T17:55: {'rows': 547}
+report naive 2026-11-20T17:55: {'sent': True}
+extract naive 2026-11-20T17:56: {'rows': 526}
+transform naive 2026-11-20T17:56: {'rows': 526}
+load naive 2026-11-20T17:56: {'rows': 526}
+report naive 2026-11-20T17:56: {'sent': True}
+extract naive 2026-11-20T17:57: {'rows': 530}
+transform naive 2026-11-20T17:57: {'rows': 530}
+load naive 2026-11-20T17:57: {'rows': 530}
+report naive 2026-11-20T17:57: {'sent': True}
+extract naive 2026-11-20T17:58: {'rows': 525}
+transform naive 2026-11-20T17:58: {'rows': 525}
+load naive 2026-11-20T17:58: {'rows': 525}
+report naive 2026-11-20T17:58: {'sent': True}
+extract naive 2026-11-20T17:59: {'rows': 546}
+transform naive 2026-11-20T17:59: {'rows': 546}
+load naive 2026-11-20T17:59: {'rows': 546}
+report naive 2026-11-20T17:59: {'sent': True}
+extract naive 2026-11-20T18:00: {'rows': 588}
+transform naive 2026-11-20T18:00: {'rows': 588}
+load naive 2026-11-20T18:00: {'rows': 588}
+report naive 2026-11-20T18:00: {'sent': True}
+extract naive 2026-11-20T18:01: {'rows': 502}
+transform naive 2026-11-20T18:01: {'rows': 502}
+load naive 2026-11-20T18:01: {'rows': 502}
+report naive 2026-11-20T18:01: {'sent': True}
+extract naive 2026-11-20T18:02: {'rows': 590}
+transform naive 2026-11-20T18:02: {'rows': 590}
+load naive 2026-11-20T18:02: {'rows': 590}
+report naive 2026-11-20T18:02: {'sent': True}
+extract naive 2026-11-20T18:03: {'rows': 525}
+transform naive 2026-11-20T18:03: {'rows': 525}
+load naive 2026-11-20T18:03: {'rows': 525}
+report naive 2026-11-20T18:03: {'sent': True}
+extract naive 2026-11-20T17:06: {'rows': 533}
+transform naive 2026-11-20T17:06: {'rows': 533}
+load naive 2026-11-20T17:06: {'rows': 533}
+report naive 2026-11-20T17:06: {'sent': True}
+extract naive 2026-11-20T17:11: {'rows': 565}
+transform naive 2026-11-20T17:11: {'rows': 565}
+load naive 2026-11-20T17:11: {'rows': 565}
+report naive 2026-11-20T17:11: {'sent': True}
+extract naive 2026-11-20T17:14: {'rows': 536}
+transform naive 2026-11-20T17:14: {'rows': 536}
+load naive 2026-11-20T17:14: {'rows': 536}
+report naive 2026-11-20T17:14: {'sent': True}
+extract naive 2026-11-20T17:18: {'rows': 575}
+transform naive 2026-11-20T17:18: {'rows': 575}
+load naive 2026-11-20T17:18: {'rows': 575}
+report naive 2026-11-20T17:18: {'sent': True}
+extract naive 2026-11-20T17:19: {'rows': 580}
+transform naive 2026-11-20T17:19: {'rows': 580}
+load naive 2026-11-20T17:19: {'rows': 580}
+report naive 2026-11-20T17:19: {'sent': True}
+extract naive 2026-11-20T17:25: {'rows': 538}
+transform naive 2026-11-20T17:25: {'rows': 538}
+load naive 2026-11-20T17:25: {'rows': 538}
+report naive 2026-11-20T17:25: {'sent': True}
+extract naive 2026-11-20T17:26: {'rows': 512}
+transform naive 2026-11-20T17:26: {'rows': 512}
+load naive 2026-11-20T17:26: {'rows': 512}
+report naive 2026-11-20T17:26: {'sent': True}
+extract naive 2026-11-20T17:27: {'rows': 556}
+transform naive 2026-11-20T17:27: {'rows': 556}
+load naive 2026-11-20T17:27: {'rows': 556}
+report naive 2026-11-20T17:27: {'sent': True}
+extract naive 2026-11-20T18:04: {'rows': 555}
+transform naive 2026-11-20T18:04: {'rows': 555}
+load naive 2026-11-20T18:04: {'rows': 555}
+report naive 2026-11-20T18:04: {'sent': True}
+extract naive 2026-11-20T18:05: {'rows': 565}
+transform naive 2026-11-20T18:05: {'rows': 565}
+load naive 2026-11-20T18:05: {'rows': 565}
+report naive 2026-11-20T18:05: {'sent': True}
+extract naive 2026-11-20T18:06: {'rows': 589}
+transform naive 2026-11-20T18:06: {'rows': 589}
+load naive 2026-11-20T18:06: {'rows': 589}
+report naive 2026-11-20T18:06: {'sent': True}
+extract naive 2026-11-20T18:07: {'rows': 559}
+transform naive 2026-11-20T18:07: {'rows': 559}
+load naive 2026-11-20T18:07: {'rows': 559}
+report naive 2026-11-20T18:07: {'sent': True}
+extract naive 2026-11-20T18:08: {'rows': 524}
+transform naive 2026-11-20T18:08: {'rows': 524}
+load naive 2026-11-20T18:08: {'rows': 524}
+report naive 2026-11-20T18:08: {'sent': True}
+extract naive 2026-11-20T18:09: {'rows': 505}
+transform naive 2026-11-20T18:09: {'rows': 505}
+load naive 2026-11-20T18:09: {'rows': 505}
+report naive 2026-11-20T18:09: {'sent': True}
+extract naive 2026-11-20T18:10: {'rows': 527}
+transform naive 2026-11-20T18:10: {'rows': 527}
+load naive 2026-11-20T18:10: {'rows': 527}
+report naive 2026-11-20T18:10: {'sent': True}
+extract naive 2026-11-20T18:11: {'rows': 545}
+transform naive 2026-11-20T18:11: {'rows': 545}
+load naive 2026-11-20T18:11: {'rows': 545}
+report naive 2026-11-20T18:11: {'sent': True}
+extract naive 2026-11-20T18:12: {'rows': 522}
+transform naive 2026-11-20T18:12: {'rows': 522}
+load naive 2026-11-20T18:12: {'rows': 522}
+report naive 2026-11-20T18:12: {'sent': True}
+extract naive 2026-11-20T18:13: {'rows': 571}
+transform naive 2026-11-20T18:13: {'rows': 571}
+load naive 2026-11-20T18:13: {'rows': 571}
+report naive 2026-11-20T18:13: {'sent': True}
+extract naive 2026-11-20T18:14: {'rows': 515}
+transform naive 2026-11-20T18:14: {'rows': 515}
+load naive 2026-11-20T18:14: {'rows': 515}
+report naive 2026-11-20T18:14: {'sent': True}
+extract naive 2026-11-20T18:15: {'rows': 525}
+transform naive 2026-11-20T18:15: {'rows': 525}
+load naive 2026-11-20T18:15: {'rows': 525}
+report naive 2026-11-20T18:15: {'sent': True}
+extract naive 2026-11-20T18:16: {'rows': 511}
+transform naive 2026-11-20T18:16: {'rows': 511}
+load naive 2026-11-20T18:16: {'rows': 511}
+report naive 2026-11-20T18:16: {'sent': True}
+extract naive 2026-11-20T18:17: {'rows': 517}
+transform naive 2026-11-20T18:17: {'rows': 517}
+load naive 2026-11-20T18:17: {'rows': 517}
+report naive 2026-11-20T18:17: {'sent': True}
+extract naive 2026-11-20T18:18: {'rows': 521}
+transform naive 2026-11-20T18:18: {'rows': 521}
+load naive 2026-11-20T18:18: {'rows': 521}
+report naive 2026-11-20T18:18: {'sent': True}
+extract naive 2026-11-20T18:19: {'rows': 587}
+transform naive 2026-11-20T18:19: {'rows': 587}
+load naive 2026-11-20T18:19: {'rows': 587}
+report naive 2026-11-20T18:19: {'sent': True}
+extract naive 2026-11-20T18:20: {'rows': 520}
+transform naive 2026-11-20T18:20: {'rows': 520}
+load naive 2026-11-20T18:20: {'rows': 520}
+report naive 2026-11-20T18:20: {'sent': True}
+extract naive 2026-11-20T18:21: {'rows': 547}
+transform naive 2026-11-20T18:21: {'rows': 547}
+load naive 2026-11-20T18:21: {'rows': 547}
+report naive 2026-11-20T18:21: {'sent': True}
+extract naive 2026-11-20T18:22: {'rows': 557}
+transform naive 2026-11-20T18:22: {'rows': 557}
+load naive 2026-11-20T18:22: {'rows': 557}
+report naive 2026-11-20T18:22: {'sent': True}
+extract naive 2026-11-20T18:23: {'rows': 503}
+transform naive 2026-11-20T18:23: {'rows': 503}
+load naive 2026-11-20T18:23: {'rows': 503}
+report naive 2026-11-20T18:23: {'sent': True}
+extract naive 2026-11-20T18:24: {'rows': 542}
+transform naive 2026-11-20T18:24: {'rows': 542}
+load naive 2026-11-20T18:24: {'rows': 542}
+report naive 2026-11-20T18:24: {'sent': True}
+extract naive 2026-11-20T18:25: {'rows': 501}
+transform naive 2026-11-20T18:25: {'rows': 501}
+load naive 2026-11-20T18:25: {'rows': 501}
+report naive 2026-11-20T18:25: {'sent': True}
+extract naive 2026-11-20T18:26: {'rows': 551}
+transform naive 2026-11-20T18:26: {'rows': 551}
+load naive 2026-11-20T18:26: {'rows': 551}
+report naive 2026-11-20T18:26: {'sent': True}
+extract naive 2026-11-20T18:27: {'rows': 503}
+transform naive 2026-11-20T18:27: {'rows': 503}
+load naive 2026-11-20T18:27: {'rows': 503}
+report naive 2026-11-20T18:27: {'sent': True}
+extract naive 2026-11-20T18:31: {'rows': 590}
+transform naive 2026-11-20T18:31: {'rows': 590}
+load naive 2026-11-20T18:31: {'rows': 590}
+report naive 2026-11-20T18:31: {'sent': True}
+extract naive 2026-11-20T18:32: {'rows': 582}
+transform naive 2026-11-20T18:32: {'rows': 582}
+load naive 2026-11-20T18:32: {'rows': 582}
+report naive 2026-11-20T18:32: {'sent': True}
+extract naive 2026-11-20T18:33: {'rows': 576}
+transform naive 2026-11-20T18:33: {'rows': 576}
+load naive 2026-11-20T18:33: {'rows': 576}
+report naive 2026-11-20T18:33: {'sent': True}
+extract naive 2026-11-20T18:34: {'rows': 598}
+transform naive 2026-11-20T18:34: {'rows': 598}
+load naive 2026-11-20T18:34: {'rows': 598}
+report naive 2026-11-20T18:34: {'sent': True}
+extract naive 2026-11-20T18:35: {'rows': 510}
+transform naive 2026-11-20T18:35: {'rows': 510}
+load naive 2026-11-20T18:35: {'rows': 510}
+report naive 2026-11-20T18:35: {'sent': True}
+extract naive 2026-11-20T18:36: {'rows': 558}
+transform naive 2026-11-20T18:36: {'rows': 558}
+load naive 2026-11-20T18:36: {'rows': 558}
+report naive 2026-11-20T18:36: {'sent': True}
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 845, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 472, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/util/util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 791, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 537, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 461, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+urllib3.exceptions.ProtocolError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/lab/etl/etl.py", line 163, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/opt/lab/etl/etl.py", line 153, in main
+    out = STEPS[step](a)
+          ^^^^^^^^^^^^^^
+  File "/opt/lab/etl/etl.py", line 44, in extract
+    r = requests.get(f"{API}/orders", timeout=60, headers={"X-Run-Id": RUN_ID},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+extract naive 2026-11-20T18:38: {'rows': 536}
+transform naive 2026-11-20T18:38: {'rows': 536}
+load naive 2026-11-20T18:38: {'rows': 536}
+report naive 2026-11-20T18:38: {'sent': True}
+extract naive 2026-11-20T18:39: {'rows': 532}
+transform naive 2026-11-20T18:39: {'rows': 532}
+load naive 2026-11-20T18:39: {'rows': 532}
+report naive 2026-11-20T18:39: {'sent': True}
+extract naive 2026-11-20T18:40: {'rows': 537}
+transform naive 2026-11-20T18:40: {'rows': 537}
+load naive 2026-11-20T18:40: {'rows': 537}
+report naive 2026-11-20T18:40: {'sent': True}
+extract naive 2026-11-20T18:41: {'rows': 501}
+transform naive 2026-11-20T18:41: {'rows': 501}
+load naive 2026-11-20T18:41: {'rows': 501}
+report naive 2026-11-20T18:41: {'sent': True}
+extract naive 2026-11-20T18:42: {'rows': 511}
+transform naive 2026-11-20T18:42: {'rows': 511}
+load naive 2026-11-20T18:42: {'rows': 511}
+report naive 2026-11-20T18:42: {'sent': True}
+extract naive 2026-11-20T18:43: {'rows': 514}
+transform naive 2026-11-20T18:43: {'rows': 514}
+load naive 2026-11-20T18:43: {'rows': 514}
+report naive 2026-11-20T18:43: {'sent': True}
+extract naive 2026-11-20T18:44: {'rows': 516}
+transform naive 2026-11-20T18:44: {'rows': 516}
+load naive 2026-11-20T18:44: {'rows': 516}
+report naive 2026-11-20T18:44: {'sent': True}
+extract naive 2026-11-20T18:45: {'rows': 556}
+transform naive 2026-11-20T18:45: {'rows': 556}
+load naive 2026-11-20T18:45: {'rows': 556}
+report naive 2026-11-20T18:45: {'sent': True}
+extract naive 2026-11-20T18:46: {'rows': 503}
+transform naive 2026-11-20T18:46: {'rows': 503}
+load naive 2026-11-20T18:46: {'rows': 503}
+report naive 2026-11-20T18:46: {'sent': True}
+extract naive 2026-11-20T18:47: {'rows': 554}
+transform naive 2026-11-20T18:47: {'rows': 554}
+load naive 2026-11-20T18:47: {'rows': 554}
+report naive 2026-11-20T18:47: {'sent': True}
+extract naive 2026-11-20T18:48: {'rows': 527}
+transform naive 2026-11-20T18:48: {'rows': 527}
+load naive 2026-11-20T18:48: {'rows': 527}
+report naive 2026-11-20T18:48: {'sent': True}
+extract naive 2026-11-20T18:49: {'rows': 517}
+transform naive 2026-11-20T18:49: {'rows': 517}
+load naive 2026-11-20T18:49: {'rows': 517}
+report naive 2026-11-20T18:49: {'sent': True}
+extract naive 2026-11-20T18:50: {'rows': 528}
+transform naive 2026-11-20T18:50: {'rows': 528}
+load naive 2026-11-20T18:50: {'rows': 528}
+report naive 2026-11-20T18:50: {'sent': True}
+extract naive 2026-11-20T18:51: {'rows': 558}
+transform naive 2026-11-20T18:51: {'rows': 558}
+load naive 2026-11-20T18:51: {'rows': 558}
+report naive 2026-11-20T18:51: {'sent': True}
+extract naive 2026-11-20T18:52: {'rows': 533}
+transform naive 2026-11-20T18:52: {'rows': 533}
+load naive 2026-11-20T18:52: {'rows': 533}
+report naive 2026-11-20T18:52: {'sent': True}
+extract naive 2026-11-20T18:53: {'rows': 519}
+transform naive 2026-11-20T18:53: {'rows': 519}
+load naive 2026-11-20T18:53: {'rows': 519}
+report naive 2026-11-20T18:53: {'sent': True}
+extract naive 2026-11-20T18:54: {'rows': 527}
+transform naive 2026-11-20T18:54: {'rows': 527}
+load naive 2026-11-20T18:54: {'rows': 527}
+report naive 2026-11-20T18:54: {'sent': True}
+extract naive 2026-11-20T18:55: {'rows': 519}
+transform naive 2026-11-20T18:55: {'rows': 519}
+load naive 2026-11-20T18:55: {'rows': 519}
+report naive 2026-11-20T18:55: {'sent': True}
+extract naive 2026-11-20T18:56: {'rows': 587}
+transform naive 2026-11-20T18:56: {'rows': 587}
+load naive 2026-11-20T18:56: {'rows': 587}
+report naive 2026-11-20T18:56: {'sent': True}

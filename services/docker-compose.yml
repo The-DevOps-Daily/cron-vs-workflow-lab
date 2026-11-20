@@ -1,0 +1,27 @@
+# Shared by every setup: the warehouse Postgres and the fake upstream
+# (source API, report sink, dead-man switch, event log).
+name: lab-services
+services:
+  warehouse:
+    image: postgres:17.6
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lab
+      POSTGRES_PASSWORD: lab
+      POSTGRES_DB: warehouse
+    ports: ["5432:5432"]
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - warehouse:/var/lib/postgresql/data
+  upstream:
+    image: python:3.12.12-slim
+    restart: unless-stopped
+    command: python3 -u /app/app.py
+    environment:
+      DATA_DIR: /data
+    ports: ["8080:8080"]
+    volumes:
+      - ./upstream:/app:ro
+      - ../results/raw:/data
+volumes:
+  warehouse:

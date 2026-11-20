@@ -1,0 +1,77 @@
+{
+    'id': '3f47067d-4e56-41a6-a32e-4c132a68b60a',
+    'created': '2026-11-20T16:54:45.168835Z',
+    'updated': '2026-11-20T18:39:30.381816Z',
+    'name': 'nightly',
+    'version': '842cfa837f7f493c435ad35c9f1c9590',
+    'version_id': None,
+    'version_info': None,
+    'branch': None,
+    'base': None,
+    'root': None,
+    'description': None,
+    'flow_id': 'f7e6c8fd-5649-4af7-b83b-b3d736740b89',
+    'concurrency_limit': None,
+    'global_concurrency_limit': {
+        'id': 'a285ce19-2635-47d1-bdc5-cffd964d7ed1',
+        'created': '2026-11-20T16:54:45.268714Z',
+        'updated': '2026-11-20T18:37:51.640861Z',
+        'active': True,
+        'name': 'deployment:3f47067d-4e56-41a6-a32e-4c132a68b60a',
+        'limit': 1,
+        'active_slots': 1,
+        'slot_decay_per_second': 0.0
+    },
+    'concurrency_options': {
+        'collision_strategy': 'ENQUEUE',
+        'grace_period_seconds': None
+    },
+    'paused': False,
+    'schedules': [
+        {
+            'id': '7d216381-14a4-443f-b53b-154bc2dbcd12',
+            'created': '2026-11-20T18:39:30.619381Z',
+            'updated': '2026-11-20T18:39:30.619445Z',
+            'deployment_id': '3f47067d-4e56-41a6-a32e-4c132a68b60a',
+            'schedule': {
+                'cron': '* * * * *',
+                'timezone': None,
+                'day_or': True
+            },
+            'active': True,
+            'max_scheduled_runs': None,
+            'parameters': {},
+            'slug': None
+        }
+    ],
+    'job_variables': {},
+    'parameters': {},
+    'pull_steps': None,
+    'tags': [],
+    'labels': {'prefect.flow.id': 'f7e6c8fd-5649-4af7-b83b-b3d736740b89'},
+    'work_queue_name': None,
+    'last_polled': '2026-11-20T18:57:16.978986Z',
+    'parameter_openapi_schema': {
+        'type': 'object',
+        'title': 'Parameters',
+        'properties': {
+            'partition': {
+                'anyOf': [{'type': 'string'}, {'type': 'null'}],
+                'title': 'partition',
+                'default': None,
+                'position': 0
+            }
+        }
+    },
+    'path': '.',
+    'entrypoint': 'flow.py:etl_flow',
+    'storage_document_id': None,
+    'infrastructure_document_id': None,
+    'created_by': None,
+    'updated_by': None,
+    'work_queue_id': None,
+    'enforce_parameter_schema': True,
+    'work_pool_name': None,
+    'status': 'READY',
+    'automations': []
+}

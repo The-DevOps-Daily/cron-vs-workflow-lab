@@ -1,0 +1,2 @@
+# /etc/cron.d/etl-naive
+* * * * * root /opt/lab/setups/1-cron-naive/etl.sh >> /var/log/etl-naive.log 2>&1

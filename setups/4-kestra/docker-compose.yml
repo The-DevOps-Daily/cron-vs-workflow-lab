@@ -1,0 +1,49 @@
+# Setup 4: Kestra, self-hosted as one standalone server plus its own Postgres.
+name: lab-kestra
+services:
+  kestra-db:
+    image: postgres:17.6
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: kestra
+      POSTGRES_PASSWORD: kestra
+      POSTGRES_DB: kestra
+    volumes: [kestra-db:/var/lib/postgresql/data]
+  kestra:
+    build: .
+    image: lab/kestra:1
+    restart: unless-stopped
+    user: root
+    command: server standalone --worker-thread=8
+    depends_on: [kestra-db]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    ports: ["8088:8080"]
+    volumes:
+      - kestra-storage:/app/storage
+      - kestra-work:/work
+    environment:
+      KESTRA_CONFIGURATION: |
+        datasources:
+          postgres:
+            url: jdbc:postgresql://kestra-db:5432/kestra
+            driver-class-name: org.postgresql.Driver
+            username: kestra
+            password: kestra
+        kestra:
+          server:
+            basic-auth:
+              username: admin@example.com
+              password: Lab-pass-1234
+          repository:
+            type: postgres
+          queue:
+            type: postgres
+          storage:
+            type: local
+            local:
+              base-path: /app/storage
+          url: http://localhost:8088/
+volumes:
+  kestra-db:
+  kestra-storage:
+  kestra-work:

@@ -1,0 +1,7 @@
+{"ts": 1795193830.853, "check": "hardened", "status": "up", "reason": "recovered"}
+{"ts": 1795194759.086, "check": "hardened", "status": "down", "reason": "fail ping"}
+{"ts": 1795194783.106, "check": "hardened", "status": "up", "reason": "recovered"}
+{"ts": 1795195701.091, "check": "hardened", "status": "down", "reason": "late"}
+{"ts": 1795195749.933, "check": "hardened", "status": "up", "reason": "recovered"}
+{"ts": 1795199486.75, "check": "hardened", "status": "down", "reason": "late"}
+{"ts": 1795199530.779, "check": "hardened", "status": "up", "reason": "recovered"}

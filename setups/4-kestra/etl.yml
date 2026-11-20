@@ -1,0 +1,85 @@
+# The same four steps as a Kestra flow. Each step is its own task with its own retries.
+id: etl
+namespace: lab
+
+inputs:
+  - id: partition
+    type: STRING
+    required: false
+
+# Applies to every execution of the flow, manual ones included.
+concurrency:
+  limit: 1
+  behavior: QUEUE
+
+variables:
+  # trigger.date is the scheduled time, also for recovered and backfilled runs
+  partition: "{{ inputs.partition ?? ((trigger.date ?? execution.startDate) | dateAdd(-1, 'MINUTES') | date(\"yyyy-MM-dd'T'HH:mm\", timeZone='UTC')) }}"
+
+tasks:
+  - id: extract
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    timeout: PT4M
+    retry:
+      type: constant
+      interval: PT10S
+      maxAttempts: 3
+    env:
+      API_URL: http://host.docker.internal:8080
+      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      RUN_ID: "{{ execution.id }}"
+    commands:
+      - python3 /opt/etl/etl.py extract --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
+  - id: transform
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    timeout: PT4M
+    retry:
+      type: constant
+      interval: PT10S
+      maxAttempts: 3
+    env:
+      API_URL: http://host.docker.internal:8080
+      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      RUN_ID: "{{ execution.id }}"
+    commands:
+      - python3 /opt/etl/etl.py transform --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
+  - id: load
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    timeout: PT4M
+    retry:
+      type: constant
+      interval: PT10S
+      maxAttempts: 3
+    env:
+      API_URL: http://host.docker.internal:8080
+      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      RUN_ID: "{{ execution.id }}"
+    commands:
+      - python3 /opt/etl/etl.py load --mode upsert --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
+  - id: report
+    type: io.kestra.plugin.scripts.shell.Commands
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    timeout: PT4M
+    retry:
+      type: constant
+      interval: PT10S
+      maxAttempts: 3
+    env:
+      API_URL: http://host.docker.internal:8080
+      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+      RUN_ID: "{{ execution.id }}"
+    commands:
+      - python3 /opt/etl/etl.py report --report-mode once --setup kestra --partition {{ render(vars.partition) }} --workdir /work/{{ execution.id }}
+
+triggers:
+  - id: nightly
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "* * * * *"
+    timezone: UTC

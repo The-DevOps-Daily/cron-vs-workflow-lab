@@ -1,0 +1,7 @@
+{"ts": 1795199031.732, "action": "start S=2026-11-20T18:25 reboot=2026-11-20T18:37"}
+{"ts": 1795199300.072, "action": "outage: systemctl poweroff"}
+{"ts": 1795199450.916, "action": "outage: power_on requested"}
+{"ts": 1795199484.107, "action": "outage: ssh is back"}
+{"ts": 1795199905.480, "action": "reboot: systemctl reboot"}
+{"ts": 1795199937.510, "action": "reboot: ssh is back"}
+{"ts": 1795200780.037, "action": "end"}

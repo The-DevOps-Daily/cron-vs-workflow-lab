@@ -1,0 +1,72 @@
+# Setup 3: a Kubernetes CronJob with the four fields that matter for a nightly job.
+# Same image and same idempotent load as setup 2. Applied to a single-node k3s cluster.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lab
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: etl
+  namespace: lab
+spec:
+  schedule: "* * * * *"
+  timeZone: Etc/UTC
+  concurrencyPolicy: Forbid        # skip a tick while the previous Job still runs
+  startingDeadlineSeconds: 300     # a tick may start up to 5 minutes late, then it is skipped
+  successfulJobsHistoryLimit: 100
+  failedJobsHistoryLimit: 100
+  jobTemplate:
+    spec:
+      backoffLimit: 2              # 3 pods at most, with the Job controller's exponential backoff
+      activeDeadlineSeconds: 240   # kill the whole Job after 4 minutes
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: etl
+              image: lab/etl:1
+              imagePullPolicy: Never
+              env:
+                - { name: SETUP, value: k8s }
+                - { name: LOAD_MODE, value: upsert }
+                - { name: REPORT_MODE, value: once }
+                - name: HOST_IP
+                  valueFrom: { fieldRef: { fieldPath: status.hostIP } }
+                - { name: API_URL, value: "http://$(HOST_IP):8080" }
+                - { name: DATABASE_URL, value: "postgresql://lab:lab@$(HOST_IP):5432/warehouse" }
+---
+# Setup 3b: the identical CronJob with the load most first versions have (append).
+# It exists to show what Kubernetes retries do to a non-idempotent write.
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: etl-append
+  namespace: lab
+spec:
+  schedule: "* * * * *"
+  timeZone: Etc/UTC
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 300
+  successfulJobsHistoryLimit: 100
+  failedJobsHistoryLimit: 100
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      activeDeadlineSeconds: 240
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: etl
+              image: lab/etl:1
+              imagePullPolicy: Never
+              env:
+                - { name: SETUP, value: k8s_append }
+                - { name: LOAD_MODE, value: append }
+                - { name: REPORT_MODE, value: always }
+                - name: HOST_IP
+                  valueFrom: { fieldRef: { fieldPath: status.hostIP } }
+                - { name: API_URL, value: "http://$(HOST_IP):8080" }
+                - { name: DATABASE_URL, value: "postgresql://lab:lab@$(HOST_IP):5432/warehouse" }

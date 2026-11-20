@@ -1,0 +1,28 @@
+{"ts": 1795197017.890, "setup": "all", "event": "poison record fixed upstream"}
+{"ts": 1795197017.921, "setup": "naive", "event": "start"}
+{"ts": 1795197129.922, "setup": "hardened", "event": "start"}
+{"ts": 1795197213.629, "setup": "hardened", "event": "end"}
+{"ts": 1795197213.647, "setup": "k8s", "event": "start"}
+{"ts": 1795197281.714, "setup": "k8s", "event": "end"}
+{"ts": 1795197281.741, "setup": "k8s_append", "event": "start"}
+{"ts": 1795197352.650, "setup": "k8s_append", "event": "end"}
+{"ts": 1795197352.667, "setup": "kestra", "event": "start"}
+{"ts": 1795197352.898, "setup": "prefect", "event": "start"}
+{"ts": 1795197370.404, "setup": "kestra", "event": "start"}
+{"ts": 1795197422.067, "setup": "prefect", "event": "start"}
+{"ts": 1795197432.167, "setup": "prefect", "event": "zombie cancelled 01a1f9e1-cf8e-77f8-8405-5540cd73dccb"}
+{"ts": 1795197446.165, "setup": "prefect", "event": "end"}
+{"ts": 1795197683, "setup": "prefect", "event": "cancel left the run in Cancelling for 5+ min; forced it to Crashed with lab/prefect-unstick.py; slot released"}
+{"ts": 1795197560, "setup": "kestra", "event": "single-execution restart endpoint returned 404 Requested Flow is not found; restarted with /executions/restart/by-ids"}
+{"ts": 1795197129, "setup": "naive", "event": "first attempt failed at 17:06: JSONDecodeError, the backfill run and the scheduled 17:52 run shared /var/tmp/etl-naive"}
+{"ts": 1795197837.293, "setup": "kestra", "event": "start"}
+{"ts": 1795197837.962, "setup": "kestra", "event": "end"}
+{"ts": 1795197837.978, "setup": "hardened", "event": "start"}
+{"ts": 1795197843.150, "setup": "hardened", "event": "end"}
+{"ts": 1795197843.175, "setup": "naive", "event": "pause cron"}
+{"ts": 1795198068.002, "setup": "naive", "event": "cron restored"}
+{"ts": 1795198079.818, "setup": "naive", "event": "end"}
+{"ts": 1795198155.674, "setup": "hardened", "event": "start"}
+{"ts": 1795198159.729, "setup": "hardened", "event": "end"}
+{"ts": 1795198174.476, "setup": "kestra-backfill", "event": "start"}
+{"ts": 1795198174.856, "setup": "kestra-backfill", "event": "end"}

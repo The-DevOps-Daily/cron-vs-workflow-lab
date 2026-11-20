@@ -1,0 +1,34 @@
+# Setup 5: Prefect, self-hosted as the API server plus its own Postgres,
+# and one process that serves the flow on its schedule.
+name: lab-prefect
+services:
+  prefect-db:
+    image: postgres:17.6
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: prefect
+      POSTGRES_PASSWORD: prefect
+      POSTGRES_DB: prefect
+    volumes: [prefect-db:/var/lib/postgresql/data]
+  prefect-server:
+    image: prefecthq/prefect:3.9.4-python3.12
+    restart: unless-stopped
+    command: prefect server start --host 0.0.0.0
+    depends_on: [prefect-db]
+    ports: ["4200:4200"]
+    environment:
+      PREFECT_API_DATABASE_CONNECTION_URL: postgresql+asyncpg://prefect:prefect@prefect-db:5432/prefect
+  etl-serve:
+    build: .
+    image: lab/prefect-etl:1
+    restart: unless-stopped
+    depends_on: [prefect-server]
+    extra_hosts: ["host.docker.internal:host-gateway"]
+    volumes: [prefect-work:/work]
+    environment:
+      PREFECT_API_URL: http://prefect-server:4200/api
+      API_URL: http://host.docker.internal:8080
+      DATABASE_URL: postgresql://lab:lab@host.docker.internal:5432/warehouse
+volumes:
+  prefect-db:
+  prefect-work:
