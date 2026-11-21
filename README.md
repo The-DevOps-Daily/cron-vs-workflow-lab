@@ -112,6 +112,20 @@ the wrong partition from a retried pod; Prefect deadlocked on its concurrency sl
 
 Memory each setup keeps resident is in `results/footprint.jsonl` (anon memory per cgroup).
 
+## Follow-up: the Prefect reboot stall with Prefect's documented fix
+
+On 2026-11-21 we re-ran only the reboot-during-a-run failure for Prefect 3.9.4, on a fresh
+`s-2vcpu-4gb` droplet with the localhost-only config, using `lab/prefect-reboot-test.sh`:
+
+- `results/prefect-reboot-zombie-automation.txt`: with `PREFECT_FLOWS_HEARTBEAT_FREQUENCY=30`
+  (`setups/5-prefect/docker-compose.zombie.yml`) and the zombie-run automation from Prefect's
+  docs (`setups/5-prefect/zombie-automation.py`), the orphaned run was marked `Crashed`
+  70 s after the reboot, the slot was released, and the schedule continued.
+- `results/prefect-reboot-defaults-control.txt`: the same reboot with defaults and the
+  automation paused.
+- `results/prefect-flow-retries-on-crash.txt`: `@flow(retries=1)` does not retry a run whose
+  process exits with 137; it ends `Crashed` after one attempt.
+
 The lab ran on 2026-11-20 on a DigitalOcean `s-4vcpu-8gb` droplet in `lon1`. Times in the
 results are UTC.
 

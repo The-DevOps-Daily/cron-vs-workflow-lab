@@ -1,0 +1,14 @@
+-- variant: PREFECT_FLOWS_HEARTBEAT_FREQUENCY=30 and the zombie-run automation (90 s window) enabled
+partition 2026-11-21T13:53 is slow (about 90 s); the run starts at 13:54:00
+13:54:50 systemctl reboot
+13:55:25 ssh is back
+-- observer restarted at 13:58:19: the first version did not pass stdin to docker exec; earlier state times come from Prefect's state history
+13:58:24 active_slots=0 13:53=Completed 13:54=Crashed 13:55=Completed 13:56=Completed 13:57=Completed 13:58=Completed
+13:58:49 active_slots=0 13:53=Completed 13:54=Crashed 13:55=Completed 13:56=Completed 13:57=Completed 13:58=Completed
+13:59:09 active_slots=0 13:53=Completed 13:54=Crashed 13:55=Completed 13:56=Completed 13:57=Completed 13:58=Completed 13:59=Completed
+-- state history from Prefect (run named by its scheduled minute; the 13:54 run loads partition 13:53)
+13:54 Scheduled@13:50:45 | Pending@13:53:50 | Submitting@13:53:50 | Running@13:53:59 | Crashed@13:56:00 (Flow run marked as crashed due to missing heartbeats.)
+13:55 Scheduled@13:50:45 | Late@13:55:46 | AwaitingConcurrencySlot@13:55:50 | Pending@13:56:11 | Submitting@13:56:11 | Running@13:56:20 | Completed@13:56:22
+13:56 Scheduled@13:55:50 | Pending@13:56:02 | Submitting@13:56:02 | Running@13:56:06 | Completed@13:56:09
+13:57 Scheduled@13:55:50 | Pending@13:56:50 | Submitting@13:56:50 | Running@13:57:00 | Completed@13:57:02
+13:58 Scheduled@13:55:50 | Pending@13:57:51 | Submitting@13:57:51 | Running@13:58:00 | Completed@13:58:02

@@ -1,0 +1,7 @@
+# Optional override: emit a flow-run heartbeat every 30 s, so the automation in
+# zombie-automation.py can mark runs orphaned by a crash or reboot as Crashed.
+#   docker compose -f docker-compose.yml -f docker-compose.zombie.yml up -d
+services:
+  etl-serve:
+    environment:
+      PREFECT_FLOWS_HEARTBEAT_FREQUENCY: "30"

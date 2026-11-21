@@ -1,0 +1,9 @@
+-- flow.py changed to @flow(name="etl", retries=1, retry_delay_seconds=10); load of partition 14:00 calls os._exit(137) after 300 rows, once
+14:01 run_count=1 Scheduled@13:59:27 | Pending@14:00:58 | Submitting@14:00:58 | Running@14:01:03 | Crashed@14:01:05 (Process exited with status code: 137. Process was killed, likely due t)
+14:02 run_count=1 Scheduled@13:59:27 | Pending@14:01:51 | Submitting@14:01:51 | Running@14:01:59 | Completed@14:02:01
+setup       partition          exp  rows  dist rep runs err crash  verdict
+prefect     2026-11-21T13:59   590   590   590   1    1   0     0  ok
+prefect     2026-11-21T14:00   512     0     0   0    1   0     1  missing
+prefect     2026-11-21T14:01   544   544   544   1    1   0     0  ok
+
+[exited with code 0]
